@@ -23,4 +23,12 @@ func TestQuickSort(t *testing.T) {
 	if !ok {
 		t.Errorf("fail of quickSort sort2: [%v]", actual)
 	}
+
+	testData3 := []int{4, 6, 3, 2, 5, 7, 9, 8, 1}
+	quickSort3(testData3, 0, len(testData3)-1)
+
+	ok = reflect.DeepEqual(expectedData, testData3)
+	if !ok {
+		t.Errorf("fail of quickSort sort2: [%v]", actual)
+	}
 }

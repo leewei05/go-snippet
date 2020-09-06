@@ -50,3 +50,27 @@ func quickSort2(data []int) []int {
 	}
 	return append(append(quickSort2(smaller), equal...), quickSort2(larger)...)
 }
+
+func quickSort3(slice []int, left, right int) {
+	if left > right {
+		return
+	}
+
+	p := partition(slice, left, right)
+	quickSort3(slice, p+1, right)
+	quickSort3(slice, left, p-1)
+}
+
+func partition(slice []int, left, right int) int {
+	// pivot always the last element
+	p := slice[right]
+	for j := left; j < right; j++ {
+		if slice[j] < p {
+			slice[j], slice[left] = slice[left], slice[j]
+			left++
+		}
+	}
+
+	slice[left], slice[right] = slice[right], slice[left]
+	return left
+}
